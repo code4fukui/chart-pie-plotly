@@ -11,15 +11,12 @@ const colors0 = [
   "#EEB259",
   "#EEE358",
 ];
-const colors1 = [
-  //"#A4BBBD",
-  "#98ADBF",
-  "#EAB9AF",
-  "#DD725A",
-  "#EEB259",
-  "#EEE358",
-];
-const colors = [...colors0, ...colors1, ...colors1, ...colors1];
+const colors = [...colors0];
+for (let i = 0; i < 20; i++) {
+  for (let j = 1; j < colors0.length; j++) {
+    colors.push(colors0[j]);
+  }
+}
 
 class ChartPie extends HTMLElement {
   constructor(data) {
