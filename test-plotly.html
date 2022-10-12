@@ -1,0 +1,36 @@
+<div id=gd></div>
+<script type="module">
+import "https://cdn.plot.ly/plotly-2.15.1.min.js";
+//Plotly.newPlot("gd", [{ y: [1, 2, 3] }])
+
+const colors = ['rgb(56, 75, 126)', 'rgb(18, 36, 37)', 'rgb(34, 53, 101)', 'rgb(36, 55, 57)', 'rgb(6, 4, 4)'];
+
+// https://plotly.com/javascript/pie-charts/
+const data = [{
+  type: "pie",
+  values: [2, 3, 4, 4,0.1,0.1,0.1],
+  labels: ["Wages", "Operating expenses", "Cost of sales", "Insurance", "A", "B", "C"],
+  //textinfo: "label+percent",
+  textinfo: "label+percent",
+  textposition: "outside", // "inside"
+  //insidetextorientation: "radial"
+  showlegend: false,
+  marker: { colors },
+}];
+
+const layout = [{
+  height: 700,
+  width: 700,
+}];
+
+Plotly.newPlot('gd', data, layout);
+
+</script>
+<style>
+#gd {
+    display: inline-block;
+    width: 500px;
+    height: 500px;
+    background-color: gray;
+}
+</style>
