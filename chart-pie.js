@@ -1,8 +1,25 @@
 import "https://cdn.plot.ly/plotly-2.15.1.min.js";
 import { CSV } from "https://js.sabae.cc/CSV.js";
-import { summarise } from "./summarise.js";
+//import { summarise } from "./summarise.js";
 
-const colors = ['rgb(56, 75, 126)', 'rgb(18, 36, 37)', 'rgb(34, 53, 101)', 'rgb(36, 55, 57)', 'rgb(6, 4, 4)'];
+// https://github.com/code4fukui/fukui-kanko-stat/issues/18
+const colors0 = [
+  "#A4BBBD",
+  "#98ADBF",
+  "#EAB9AF",
+  "#DD725A",
+  "#EEB259",
+  "#EEE358",
+];
+const colors1 = [
+  //"#A4BBBD",
+  "#98ADBF",
+  "#EAB9AF",
+  "#DD725A",
+  "#EEB259",
+  "#EEE358",
+];
+const colors = [...colors0, ...colors1, ...colors1, ...colors1];
 
 class ChartPie extends HTMLElement {
   constructor(data) {
@@ -41,7 +58,10 @@ class ChartPie extends HTMLElement {
       //textposition: "outside", // ラベルが線を引いて円グラフの外
       textposition: "inside", // ラベルが円グラフの中
       //insidetextorientation: "radial",
-      showlegend: false,
+
+      //showlegend: false,
+      showlegend: true,
+
       marker: { colors },
     }];
     
