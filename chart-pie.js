@@ -59,6 +59,8 @@ class ChartPie extends HTMLElement {
       //showlegend: false,
       showlegend: true,
 
+      direction: 'clockwise',
+      
       marker: { colors },
     }];
     
