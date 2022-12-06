@@ -13,7 +13,7 @@ const colors0 = [
 ];
 const colors = [...colors0];
 for (let i = 0; i < 20; i++) {
-  for (let j = 1; j < colors0.length; j++) {
+  for (let j = 0; j < colors0.length; j++) {
     colors.push(colors0[j]);
   }
 }
@@ -34,6 +34,7 @@ class ChartPie extends HTMLElement {
       }
     }
   }
+
   setCSV(csv) {
     const data = {};
     for (const d of csv) {
@@ -41,12 +42,23 @@ class ChartPie extends HTMLElement {
     }
     this.setData(data);
   }
-
+  
   setData(data0) {
     const data1 = data0; // summarise(data0, 20);
-    const labels = Object.keys(data1);
-    const values = Object.values(data1);
-
+    // データを降順にソートして、チャートの色もソート順に色付けするようにする
+    const labels = Object.keys(data1).sort((d1, d2) => {
+      if (data1[d1] > data1[d2]) {
+        return -1;
+      }
+      if (data1[d1] < data1[d2]) {
+        return 1;
+      }
+      return 0;
+    });
+    const values = labels.map((l) => {
+      return data1[l];
+    });
+    
     const data = [{
       type: "pie",
       values,
@@ -54,11 +66,12 @@ class ChartPie extends HTMLElement {
       textinfo: "label+percent",
       //textposition: "outside", // ラベルが線を引いて円グラフの外
       textposition: "inside", // ラベルが円グラフの中
-      //insidetextorientation: "radial",
-
+      insidetextorientation: "radial",
+      
       //showlegend: false,
       showlegend: true,
-
+      direction: 'clockwise',
+      
       marker: { colors },
     }];
     
