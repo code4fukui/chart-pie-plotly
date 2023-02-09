@@ -75,7 +75,9 @@ class ChartPie extends HTMLElement {
       marker: { colors },
     }];
 
-    const layout = {};
+    const layout = {
+      showlegend: options["showlegend"] == undefined ? true : options["showlegend"]
+    };
     if (!this.style.width) {
       layout.width = !options["width"] ? 700 : options["width"];
     }
