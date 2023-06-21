@@ -1,4 +1,5 @@
-import "https://cdn.plot.ly/plotly-2.15.1.min.js";
+//import "https://cdn.plot.ly/plotly-2.15.1.min.js";
+import "./plotly.min.js";
 import { CSV } from "https://js.sabae.cc/CSV.js";
 //import { summarise } from "./summarise.js";
 
