@@ -20,31 +20,31 @@ for (let i = 0; i < 20; i++) {
 }
 
 class ChartPie extends HTMLElement {
-  constructor(data) {
+  constructor(data, options) {
     super();
     if (data !== undefined) {
-      this.setData(data);
+      this.setData(data, options);
     } else {
       const src = this.getAttribute("src");
       if (src) {
-        this.init(src);
+        this.init(src, options);
       } else {
         const txt = this.textContent.trim();
         const csv = CSV.toJSON(CSV.decode(txt));
-        this.setCSV(csv);
+        this.setCSV(csv, options);
       }
     }
   }
 
-  setCSV(csv) {
+  setCSV(csv, options) {
     const data = {};
     for (const d of csv) {
       data[d.name] = d.value || d.count;
     }
-    this.setData(data);
+    this.setData(data, options);
   }
   
-  setData(data0) {
+  setData(data0, options = {}) {
     const data1 = data0; // summarise(data0, 20);
     // データを降順にソートして、チャートの色もソート順に色付けするようにする
     const labels = Object.keys(data1).sort((d1, d2) => {
@@ -75,12 +75,17 @@ class ChartPie extends HTMLElement {
       
       marker: { colors },
     }];
+
+    const layout = {};
+    if (!this.style.width) {
+      layout.width = !options["width"] ? 700 : options["width"];
+    }
     
-    Plotly.newPlot(this, data);
+    Plotly.newPlot(this, data, layout);
   }
-  async init(src) {
+  async init(src, options) {
     const csv = CSV.toJSON(await CSV.fetch(src));
-    this.setCSV(csv);
+    this.setCSV(csv, options);
   }
 }
 

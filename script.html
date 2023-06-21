@@ -22,7 +22,9 @@ const data = [
   { name: "C", count: 70 },
 ];
 */
-const chart = new ChartPie(data);
+const chart = new ChartPie(data, {
+  width: window.innerWidth - 64
+});
 //chart.style.width = "300px";
 //chart.style.height = "300px";
 p.appendChild(chart);
