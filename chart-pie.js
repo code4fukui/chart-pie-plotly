@@ -70,7 +70,7 @@ class ChartPie extends HTMLElement {
       insidetextorientation: "radial",
       
       //showlegend: false,
-      showlegend: options["showlegend"] ? options["showlegend"] : true,
+      showlegend: options["showlegend"] != undefined ? options["showlegend"] : true,
       direction: 'clockwise',
       
       marker: { colors },
