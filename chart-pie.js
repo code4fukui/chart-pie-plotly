@@ -64,13 +64,13 @@ class ChartPie extends HTMLElement {
       type: "pie",
       values,
       labels,
-      textinfo: "label+percent",
+      textinfo: options["textinfo"] ? options["textinfo"] : "label+percent",
       //textposition: "outside", // ラベルが線を引いて円グラフの外
       textposition: "inside", // ラベルが円グラフの中
       insidetextorientation: "radial",
       
       //showlegend: false,
-      showlegend: true,
+      showlegend: options["showlegend"] ? options["showlegend"] : true,
       direction: 'clockwise',
       
       marker: { colors },
