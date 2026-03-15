@@ -1,5 +1,7 @@
 # chart-pie-plotly
 
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
 A JavaScript library for creating pie charts using Plotly.js.
 
 ## Demo
