@@ -37,4 +37,4 @@ C,70
 Refer to the project's documentation for more advanced usage and customization options.
 
 ## License
-This project is licensed under the MIT License.
+MIT License — see [LICENSE](LICENSE).
